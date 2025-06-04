@@ -6,6 +6,8 @@ import { Plus, X } from 'lucide-react';
 //import { TransactionType } from '../types';
 //import { DEFAULT_CATEGORIES } from '../constants/categories';
 import { useTransactionForm } from '../hooks/UseTransactionForm';
+import { FormInput } from './FormForAddTransaction';
+import { FormSelect } from './FormForAddTransaction';
 
 
 
@@ -92,7 +94,7 @@ const AddTransaction: React.FC = () => {
             </div>
           </div>
           
-          {/* Description */}
+          {/*
           <div className="mb-4">
             <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
               Description
@@ -105,9 +107,32 @@ const AddTransaction: React.FC = () => {
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="What was this transaction for?"
             />
-          </div>
+          </div>*/}
+
+          {/* Description */}
+          <FormInput
+          id= "description"
+          label= "Description"
+          type="text"
+          placeholder="What was this transaction for?"
+          onChange={(e: any) => setDescription(e.target.value)}
+          />
+
+
+          <FormInput
+            id="amount"
+            label="Amount ($)"
+            type="number"
+            placeholder="0.00"
+            step="0.01"
+            min="0.01"
+            value={amount}
+            onChange={(e: any) => setAmount(e.target.value)}
+          />
           
           {/* Amount */}
+
+          {/*
           <div className="mb-4">
             <label htmlFor="amount" className="block text-sm font-medium text-gray-700 mb-1">
               Amount ($)
@@ -123,7 +148,10 @@ const AddTransaction: React.FC = () => {
               placeholder="0.00"
             />
           </div>
+          */}
+
           
+
           {/* Category */}
           <div className="mb-6">
             <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">
@@ -150,7 +178,7 @@ const AddTransaction: React.FC = () => {
             </select>
           </div>
 
-          {/* date */}
+          {/*
           <div>
               <input
                 type="date"
@@ -158,7 +186,18 @@ const AddTransaction: React.FC = () => {
                 onChange={(e) => setDate(e.target.value)}
                 required
               />
-          </div>
+          </div>*/}
+
+          {/* date */}
+          
+        <FormInput
+          id= "date"
+          label= "Date"
+          type="Date"
+          value={Date}
+          onChange={(e: any) => setDate(e.target.value)}
+          />
+
           
           {/* Submit Button */}
           <button
