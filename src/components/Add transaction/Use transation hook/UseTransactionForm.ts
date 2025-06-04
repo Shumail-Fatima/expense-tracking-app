@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useAppContext } from '../context/AppContext';
-import { TransactionType } from '../types';
+import { useAppContext } from '../../../context/AppContext';
+import { TransactionType } from '../../../types';
 //import { DEFAULT_CATEGORIES } from '../constants/categories';
 
 

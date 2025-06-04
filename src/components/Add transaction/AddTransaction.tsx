@@ -1,11 +1,11 @@
 //import React, { useState } from 'react';
 import React from 'react';
 //import { useAppContext } from '../context/AppContext';
-import { DEFAULT_CATEGORIES } from '../context/Categories';
+import { DEFAULT_CATEGORIES } from '../../context/Categories';
 import { Plus, X } from 'lucide-react';
 //import { TransactionType } from '../types';
 //import { DEFAULT_CATEGORIES } from '../constants/categories';
-import { useTransactionForm } from '../hooks/UseTransactionForm';
+import { useTransactionForm } from './Use transation hook/UseTransactionForm';
 
 
 

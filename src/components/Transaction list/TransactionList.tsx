@@ -1,9 +1,9 @@
 import React, { useState, useMemo } from 'react';
-import { useAppContext } from '../context/AppContext';
-import TransactionItem from './TransactionItem';
+import { useAppContext } from '../../context/AppContext';
+import TransactionItem from '../TransactionItem';
 //import { Search, Filter } from 'lucide-react';
 import { Filter } from 'lucide-react';
-import { DEFAULT_CATEGORIES } from '../context/Categories';
+import { DEFAULT_CATEGORIES } from '../../context/Categories';
 //import AddTransaction from './AddTransaction';
 //import { DEFAULT_CATEGORIES } from '../constants/categories';
 
