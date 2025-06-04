@@ -28,17 +28,6 @@ const useFilteredTransactions = (
             if (endTime && new Date(transaction.date).getTime() > new Date(endTime).getTime()) {
               return false;
             }
-    
-            /*
-            // Filter by search term not being used now
-            if (searchTerm.trim() !== '') {
-              const term = searchTerm.toLowerCase();
-              return (
-                transaction.description.toLowerCase().includes(term) || 
-                transaction.category.toLowerCase().includes(term)
-              );
-            }*/
-            
             return true;
           })
           .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());

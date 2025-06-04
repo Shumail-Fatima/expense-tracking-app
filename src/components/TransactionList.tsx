@@ -36,16 +36,6 @@ const TransactionList: React.FC = () => {
         if (endTime && new Date(transaction.date).getTime() > new Date(endTime).getTime()) {
           return false;
         }
-
-        /*
-        // Filter by search term not being used now
-        if (searchTerm.trim() !== '') {
-          const term = searchTerm.toLowerCase();
-          return (
-            transaction.description.toLowerCase().includes(term) || 
-            transaction.category.toLowerCase().includes(term)
-          );
-        }*/
         
         return true;
       })
@@ -58,19 +48,6 @@ const TransactionList: React.FC = () => {
       
       {/* Search and Filter */}
       <div className="mb-4 space-y-3">
-        {/*
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <Search className="h-5 w-5 text-gray-400" />
-          </div>
-          <input
-            type="text"
-            placeholder="Search transactions..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>*/}
         
         <div className="flex space-x-2">
           <button
@@ -104,36 +81,6 @@ const TransactionList: React.FC = () => {
             Expenses
           </button>
         </div>
-        
-
-        {/*
-        <div className="flex flex-wrap space-x-2 mt-2">
-          <button
-            className={`px-3 py-1 rounded-md text-sm ${
-              filterCategory === 'all' 
-                ? 'bg-blue-100 text-blue-700' 
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-            }`}
-            onClick={() => setFilterCategory('all')}
-          >
-            All Categories
-          </button>
-          {DEFAULT_CATEGORIES.map(category => (
-            <button
-              key={category.id}
-              className={`px-3 py-1 rounded-md text-sm ${
-                filterCategory === category.id
-                  ? `bg-[${category.color}] text-white`
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-              onClick={() => setFilterCategory(category.id)}
-              style={{ backgroundColor: filterCategory === category.id ? category.color : undefined }}
-            >
-              {category.name}
-            </button>
-          ))}
-        </div>*/}
-        
         
         <div className="mt-2">
           <select

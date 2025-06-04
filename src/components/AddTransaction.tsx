@@ -28,58 +28,14 @@ const AddTransaction: React.FC = () => {
     setType,
     setCategory,
   } = useTransactionForm();
-/*
 
-  const { addTransaction } = useAppContext();
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [description, setDescription] = useState('');
-  const [amount, setAmount] = useState('');
-  const [type, setType] = useState<TransactionType>('expense');
-  const [category, setCategory] = useState('other');
-  const [error, setError] = useState('');
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Validation
-    if (!description.trim()) {
-      setError('Please enter a description');
-      return;
-    }
-    
-    const amountValue = parseFloat(amount);
-    if (isNaN(amountValue) || amountValue <= 0) {
-      setError('Please enter a valid amount');
-      return;
-    }
-    
-    // Add transaction
-    addTransaction({
-      description: description.trim(),
-      amount: amountValue,
-      type,
-      category,
-      date: new Date().toISOString(),
-    });
-    
-    // Reset form
-    setDescription('');
-    setAmount('');
-    setType('expense');
-    setCategory('other');
-    setError('');
-    setIsFormOpen(false);
-  };
-  */
 
   if (!isFormOpen) {
     return (
       <button
         onClick={() => openForm()}
         className="fixed bottom-6 right-6 bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-blue-700 transition-all duration-200 flex items-center justify-center"
-        //className="fixed bottom 50 center-50 bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-blue-700 transition-all duration-200 flex items-center justify-center"
-        //className="fixed binset[3px] top [6] center-50 bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-blue-700 transition-all duration-200 flex items-center justify-center"
-        //className="bg-blue-600 text-white rounded-md px-4 py-2 shadow hover:bg-blue-700 transition-all duration-200 flex items-center gap-2"
+        
         aria-label="Add transaction"
       >
         <Plus className="h-6 w-6" />
@@ -87,20 +43,6 @@ const AddTransaction: React.FC = () => {
       </button>
     );
   }
-
-  /*if (!isFormOpen) {
-    return (
-      <button
-        onClick={() => setIsFormOpen(true)}
-        className="bg-blue-600 text-white rounded px-3 py-1.5 text-sm hover:bg-blue-700 transition whitespace-nowrap"
-      >
-        + Add Transaction
-      </button>
-    );
-  }*/
-
-
-
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
