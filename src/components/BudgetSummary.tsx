@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react';
 import { useAppContext } from '../context/AppContext';
-import { ArrowUpCircle, ArrowDownCircle, DollarSign } from 'lucide-react';
+//import { ArrowUpCircle, ArrowDownCircle, DollarSign } from 'lucide-react';
+import { ArrowUpCircle, ArrowDownCircle } from 'lucide-react';
+
 
 const BudgetSummary: React.FC = () => {
   const { state } = useAppContext();

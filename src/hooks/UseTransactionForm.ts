@@ -1,17 +1,22 @@
-//import { useState } from 'react';
-//import { useAppContext } from '../context/AppContext';
-//import { TransactionType } from '../types';
+import { useState } from 'react';
+import { useAppContext } from '../context/AppContext';
+import { TransactionType } from '../types';
 //import { DEFAULT_CATEGORIES } from '../constants/categories';
 
 
-/*
+
 export const useTransactionForm = (onSuccess?: () => void) => {
     const { addTransaction } = useAppContext();
+    const [isFormOpen, setIsFormOpen] = useState(false);
     const [description, setDescription] = useState('');
     const [amount, setAmount] = useState('');
     const [type, setType] = useState<TransactionType>('expense');
     const [category, setCategory] = useState('other');
     const [error, setError] = useState('');
+
+    const openForm = () => setIsFormOpen(true);
+    const closeForm = () => setIsFormOpen(false);
+
 
     const resetForm = () => {
     setDescription('');
@@ -19,6 +24,7 @@ export const useTransactionForm = (onSuccess?: () => void) => {
     setType('expense');
     setCategory('other');
     setError('');
+    setIsFormOpen(false);
   };
     
     const handleSubmit = (e: React.FormEvent) => {
@@ -53,6 +59,9 @@ export const useTransactionForm = (onSuccess?: () => void) => {
 
     
   return {
+    isFormOpen,
+    openForm,
+    closeForm,
     description,
     setDescription,
     amount,
@@ -67,4 +76,4 @@ export const useTransactionForm = (onSuccess?: () => void) => {
   };
 
 
-};*/
+};

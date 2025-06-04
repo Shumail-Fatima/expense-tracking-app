@@ -1,12 +1,33 @@
-import React, { useState } from 'react';
-import { useAppContext } from '../context/AppContext';
+//import React, { useState } from 'react';
+import React from 'react';
+//import { useAppContext } from '../context/AppContext';
 import { DEFAULT_CATEGORIES } from '../context/Categories';
 import { Plus, X } from 'lucide-react';
-import { TransactionType } from '../types';
+//import { TransactionType } from '../types';
 //import { DEFAULT_CATEGORIES } from '../constants/categories';
+import { useTransactionForm } from '../hooks/UseTransactionForm';
+
 
 
 const AddTransaction: React.FC = () => {
+
+  const {
+    isFormOpen,
+    openForm,
+    closeForm,
+    description,
+    amount,
+    type,
+    category,
+    error,
+    handleSubmit,
+    setDescription,
+    setAmount,
+    setType,
+    setCategory,
+  } = useTransactionForm();
+/*
+
   const { addTransaction } = useAppContext();
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [description, setDescription] = useState('');
@@ -47,11 +68,12 @@ const AddTransaction: React.FC = () => {
     setError('');
     setIsFormOpen(false);
   };
+  */
 
   if (!isFormOpen) {
     return (
       <button
-        onClick={() => setIsFormOpen(true)}
+        onClick={() => openForm()}
         className="fixed bottom-6 right-6 bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-blue-700 transition-all duration-200 flex items-center justify-center"
         //className="fixed bottom 50 center-50 bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-blue-700 transition-all duration-200 flex items-center justify-center"
         //className="fixed binset[3px] top [6] center-50 bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-blue-700 transition-all duration-200 flex items-center justify-center"
@@ -84,7 +106,7 @@ const AddTransaction: React.FC = () => {
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-semibold text-gray-800">Add Transaction</h2>
           <button 
-            onClick={() => setIsFormOpen(false)}
+            onClick={() => closeForm()}
             className="text-gray-500 hover:text-gray-700"
           >
             <X className="h-5 w-5" />
