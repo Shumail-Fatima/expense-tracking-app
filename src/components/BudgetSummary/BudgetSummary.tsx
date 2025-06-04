@@ -1,8 +1,9 @@
 import React, { useMemo } from 'react';
-import { useAppContext } from '../context/AppContext';
+import { useAppContext } from '../../context/AppContext';
 //import { ArrowUpCircle, ArrowDownCircle, DollarSign } from 'lucide-react';
 import { ArrowUpCircle, ArrowDownCircle } from 'lucide-react';
-
+import SummaryDisplay from './SummaryDisplay';
+import IncomeExpenseCard from './IncomeExpenseCard';
 
 const BudgetSummary: React.FC = () => {
   const { state } = useAppContext();
@@ -23,6 +24,7 @@ const BudgetSummary: React.FC = () => {
     };
   }, [state.transactions, state.balance]);
 
+  /*
   // Calculate percentage for progress bar
   const calculatePercentage = () => {
     if (summary.totalIncome <= 0) return 0;
@@ -32,12 +34,14 @@ const BudgetSummary: React.FC = () => {
 
   const percentage = calculatePercentage();
   const isOverBudget = summary.balance < 0;
+  */
 
   return (
     <div className="bg-white rounded-xl shadow-md p-6 mb-6 transition-all duration-300 hover:shadow-lg">
       <h2 className="text-xl font-semibold mb-4 text-gray-800">Budget Summary</h2>
-      
-      {/* Current Balance */}
+      <SummaryDisplay balance={summary.balance} totalIncome={summary.totalIncome} totalExpenses={summary.totalExpenses} />
+    {/*
+      {
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">
           <p className="text-gray-600">Current Balance</p>
@@ -47,7 +51,7 @@ const BudgetSummary: React.FC = () => {
           </p>
         </div>
         
-        {/* Progress bar */}
+        
         <div className="h-3 w-full bg-gray-200 rounded-full overflow-hidden mt-2">
           <div 
             className={`h-full transition-all duration-500 ease-out ${
@@ -64,8 +68,24 @@ const BudgetSummary: React.FC = () => {
               : 'Good job managing your budget'}
         </p>
       </div>
+    */}
+    
+  <div className="grid grid-cols-2 gap-4">
+      <IncomeExpenseCard 
+      icon={<ArrowUpCircle className="h-5 w-5 mr-2" />} 
+      title={'income'} 
+      amount={summary.totalIncome} 
+      bgColor={'green'}>
+      </IncomeExpenseCard>
       
-      {/* Income and Expenses */}
+      <IncomeExpenseCard 
+      icon={<ArrowDownCircle className="h-5 w-5 mr-2" />} 
+      title={'expense'} 
+      amount={summary.totalExpenses} 
+      bgColor={'red'}>
+      </IncomeExpenseCard>
+  </div>
+      {/*
       <div className="grid grid-cols-2 gap-4">
         <div className="bg-green-50 p-4 rounded-lg border border-green-100">
           <div className="flex items-center text-green-600 mb-2">
@@ -83,6 +103,7 @@ const BudgetSummary: React.FC = () => {
           <p className="text-xl font-semibold text-red-700">${summary.totalExpenses.toFixed(2)}</p>
         </div>
       </div>
+*/}
     </div>
   );
 };
