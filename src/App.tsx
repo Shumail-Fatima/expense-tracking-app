@@ -2,8 +2,8 @@ import React from 'react';
 import { AppProvider } from './context/AppContext';
 import Header from './components/Header';
 import BudgetSummary from './components/BudgetSummary/BudgetSummary';
-import TransactionList from './components/Transaction list/TransactionList';
-import AddTransaction from './components/Add transaction/AddTransaction';
+import TransactionList from './components/TransactionList';
+import AddTransaction from './components/AddTransaction';
 
 function App() {
   return (

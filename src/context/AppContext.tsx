@@ -2,7 +2,7 @@ import React, { createContext, useContext, useReducer, useEffect, ReactNode } fr
 //import { Transaction, AppState, TransactionType } from '../types';
 import { Transaction, AppState} from '../types';
 import { appReducer } from './AppReducer';
-import { initialState } from './InitialState';
+import { initialState } from '../constants/InitialState';
 import { loadFromStorage, saveToStorage } from '../utils/storage';
 
 /*

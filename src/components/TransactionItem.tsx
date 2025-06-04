@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Transaction } from '../types';
 import { useAppContext } from '../context/AppContext';
-import { DEFAULT_CATEGORIES } from '../context/Categories';
+import { DEFAULT_CATEGORIES } from '../constants/Categories';
 import { Trash2, Edit, X, Check } from 'lucide-react';
 import { format } from '../utils/dateFormatter';
 
