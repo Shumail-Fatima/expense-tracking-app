@@ -20,6 +20,8 @@ const AddTransaction: React.FC = () => {
     type,
     category,
     error,
+    date,
+    setDate,
     handleSubmit,
     setDescription,
     setAmount,
@@ -204,6 +206,16 @@ const AddTransaction: React.FC = () => {
                 ))
               }
             </select>
+          </div>
+
+          {/* date */}
+          <div>
+              <input
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                required
+              />
           </div>
           
           {/* Submit Button */}

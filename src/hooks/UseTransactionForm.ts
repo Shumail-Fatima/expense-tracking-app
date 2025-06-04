@@ -13,6 +13,7 @@ export const useTransactionForm = (onSuccess?: () => void) => {
     const [type, setType] = useState<TransactionType>('expense');
     const [category, setCategory] = useState('other');
     const [error, setError] = useState('');
+    const [date, setDate] = useState('');
 
     const openForm = () => setIsFormOpen(true);
     const closeForm = () => setIsFormOpen(false);
@@ -24,6 +25,7 @@ export const useTransactionForm = (onSuccess?: () => void) => {
     setType('expense');
     setCategory('other');
     setError('');
+    setDate('');
     setIsFormOpen(false);
   };
     
@@ -48,7 +50,8 @@ export const useTransactionForm = (onSuccess?: () => void) => {
         amount: amountValue,
         type,
         category,
-        date: new Date().toISOString(),
+        //date: new Date().toISOString(),
+        date: new Date(date).toISOString(),
     });
 
     // Reset form
@@ -73,6 +76,8 @@ export const useTransactionForm = (onSuccess?: () => void) => {
     error,
     handleSubmit,
     resetForm,
+    date,
+    setDate
   };
 
 
