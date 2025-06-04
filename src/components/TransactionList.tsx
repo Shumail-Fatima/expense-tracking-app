@@ -1,13 +1,16 @@
 import React, { useState, useMemo } from 'react';
 import { useAppContext } from '../context/AppContext';
 import TransactionItem from './TransactionItem';
-import { Search, Filter } from 'lucide-react';
-import { DEFAULT_CATEGORIES } from '../context/AppContext';
-import {format} from '../utils/dateFormatter';
+//import { Search, Filter } from 'lucide-react';
+import { Filter } from 'lucide-react';
+import { DEFAULT_CATEGORIES } from '../context/Categories';
+//import AddTransaction from './AddTransaction';
+//import { DEFAULT_CATEGORIES } from '../constants/categories';
+
 
 const TransactionList: React.FC = () => {
   const { state } = useAppContext();
-  const [searchTerm, setSearchTerm] = useState('');
+  //const [searchTerm, setSearchTerm] = useState('');
   const [filterType, setFilterType] = useState<'all' | 'income' | 'expense'>('all');
   const [filterCategory, setFilterCategory] = useState<string>('all');
   const [startTime, setStartTime] = useState<string>('');
@@ -34,7 +37,7 @@ const TransactionList: React.FC = () => {
           return false;
         }
 
-        
+        /*
         // Filter by search term not being used now
         if (searchTerm.trim() !== '') {
           const term = searchTerm.toLowerCase();
@@ -42,7 +45,7 @@ const TransactionList: React.FC = () => {
             transaction.description.toLowerCase().includes(term) || 
             transaction.category.toLowerCase().includes(term)
           );
-        }
+        }*/
         
         return true;
       })
@@ -51,7 +54,7 @@ const TransactionList: React.FC = () => {
 
   return (
     <div className="bg-white rounded-xl shadow-md p-6 mb-24">
-      <h2 className="text-xl font-semibold mb-4 text-gray-800">Transactions</h2>
+        <h2 className="text-xl font-semibold mb-4 text-gray-800">Transactions</h2>
       
       {/* Search and Filter */}
       <div className="mb-4 space-y-3">

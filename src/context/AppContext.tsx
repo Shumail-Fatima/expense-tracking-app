@@ -1,34 +1,11 @@
 import React, { createContext, useContext, useReducer, useEffect, ReactNode } from 'react';
-import { Transaction, AppState, TransactionType } from '../types';
+//import { Transaction, AppState, TransactionType } from '../types';
+import { Transaction, AppState} from '../types';
+import { appReducer } from './AppReducer';
+import { initialState } from './InitialState';
+import { loadFromStorage, saveToStorage } from '../utils/storage';
 
-// Initial default categories
-export const DEFAULT_CATEGORIES = [
-  { id: 'food', name: 'Food & Dining', color: '#F59E0B' },
-  { id: 'shopping', name: 'Shopping', color: '#EC4899' },
-  { id: 'transportation', name: 'Transportation', color: '#3B82F6' },
-  { id: 'entertainment', name: 'Entertainment', color: '#8B5CF6' },
-  { id: 'utilities', name: 'Utilities', color: '#10B981' },
-  { id: 'other', name: 'Other', color: '#6B7280' },
-  { id: 'salary', name: 'Salary', color: '#10B981' },
-  { id: 'gift', name: 'Gift', color: '#F472B6' },
-];
-
-// Define action types
-type Action =
-  | { type: 'ADD_TRANSACTION'; payload: Transaction }
-  | { type: 'DELETE_TRANSACTION'; payload: string }
-  | { type: 'EDIT_TRANSACTION'; payload: Transaction }
-  | { type: 'SET_TRANSACTIONS'; payload: Transaction[] }
-  | { type: 'SET_WALLET_AMOUNT'; payload: number }
-  | { type: 'TOP_UP_EXPENSE'; payload: string };
-
-// Initial state
-const initialState: AppState = {
-  transactions: [],
-  balance: 0,
-  walletAmount: 0,
-};
-
+/*
 // Calculate balance from transactions
 const calculateBalance = (transactions: Transaction[]): number => {
   return transactions.reduce((acc, transaction) => {
@@ -38,8 +15,10 @@ const calculateBalance = (transactions: Transaction[]): number => {
       return acc - transaction.amount;
     }
   }, 0);
-};
+}; */
 
+
+/*
 // Reducer function
 const appReducer = (state: AppState, action: Action): AppState => {
   switch (action.type) {
@@ -132,7 +111,7 @@ const appReducer = (state: AppState, action: Action): AppState => {
     default:
       return state;
   }
-};
+};*/
 
 // Create context
 interface AppContextProps {
@@ -146,6 +125,54 @@ interface AppContextProps {
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
 
+export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [state, dispatch] = useReducer(appReducer, initialState);
+
+  useEffect(() => {
+    const savedTransactions = loadFromStorage<Transaction[]>('transactions');
+    const savedWalletAmount = loadFromStorage<number>('walletAmount');
+    if (savedTransactions) {
+      dispatch({ type: 'SET_TRANSACTIONS', payload: savedTransactions });
+    }
+    if (typeof savedWalletAmount === 'number') {
+      dispatch({ type: 'SET_WALLET_AMOUNT', payload: savedWalletAmount });
+    }
+  }, []);
+
+  useEffect(() => {
+    saveToStorage('transactions', state.transactions);
+    saveToStorage('walletAmount', state.walletAmount);
+  }, [state.transactions, state.walletAmount]);
+
+  const addTransaction = (transaction: Omit<Transaction, 'id'>) => {
+    const newTransaction: Transaction = { ...transaction, id: crypto.randomUUID() };
+    dispatch({ type: 'ADD_TRANSACTION', payload: newTransaction });
+  };
+
+  const deleteTransaction = (id: string) => {
+    dispatch({ type: 'DELETE_TRANSACTION', payload: id });
+  };
+
+  const editTransaction = (transaction: Transaction) => {
+    dispatch({ type: 'EDIT_TRANSACTION', payload: transaction });
+  };
+
+  const setWalletAmount = (amount: number) => {
+    dispatch({ type: 'SET_WALLET_AMOUNT', payload: amount });
+  };
+
+  const topUpExpense = (id: string) => {
+    dispatch({ type: 'TOP_UP_EXPENSE', payload: id });
+  };
+
+  return (
+    <AppContext.Provider value={{ state, addTransaction, deleteTransaction, editTransaction, setWalletAmount, topUpExpense }}>
+      {children}
+    </AppContext.Provider>
+  );
+};
+
+/*
 // Provider component
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
@@ -155,6 +182,9 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     try {
       const savedTransactions = localStorage.getItem('transactions');
       const savedWalletAmount = localStorage.getItem('walletAmount');
+
+      //const savedTransactions = loadFromStorage<Transaction[]>('transactions');
+      //const savedWalletAmount = loadFromStorage<number>('walletAmount');
       
       if (savedTransactions && savedTransactions !== 'undefined') {
         const parsedTransactions = JSON.parse(savedTransactions);
@@ -226,7 +256,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       {children}
     </AppContext.Provider>
   );
-};
+}; */
 
 // Custom hook for using the context
 export const useAppContext = (): AppContextProps => {
