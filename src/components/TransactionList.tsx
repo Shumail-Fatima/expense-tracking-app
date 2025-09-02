@@ -97,27 +97,30 @@ const TransactionList: React.FC = () => {
           </select>
         </div>
         
-        <div className="flex space-x-4 mt-2">
-          <div className="flex flex-col">
-            <label className="text-sm text-gray-600 mb-1">Start Date</label>
-            <input
-              type="date"
-              value={startTime}
-              onChange={(e) => setStartTime(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <div className="flex flex-col">
-              <label className="text-sm text-gray-600 mb-1">End Date</label>
-              <input
-                type="date"
-                value={endTime}
-                onChange={(e) => setEndTime(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-          </div>
+
+      <div className="flex space-x-4 mt-2">
+        {/* Start Date */}
+        <div className="flex flex-col">
+          <label className="text-sm text-gray-600 mb-1">Start Date</label>
+          <input
+            type="date"
+            value={startTime}
+            onChange={(e) => setStartTime(e.target.value)}
+            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
         </div>
 
+        {/* End Date */}
+        <div className="flex flex-col">
+          <label className="text-sm text-gray-600 mb-1">End Date</label>
+          <input
+            type="date"
+            value={endTime}
+            onChange={(e) => setEndTime(e.target.value)}
+            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+      </div>
 
       </div>
       

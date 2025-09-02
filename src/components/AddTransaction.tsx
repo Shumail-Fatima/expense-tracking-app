@@ -7,7 +7,7 @@ import { Plus, X } from 'lucide-react';
 //import { DEFAULT_CATEGORIES } from '../constants/categories';
 import { useTransactionForm } from '../hooks/UseTransactionForm';
 import { FormInput } from './FormForAddTransaction';
-import { FormSelect } from './FormForAddTransaction';
+//import { FormSelect } from './FormForAddTransaction';
 
 
 
@@ -93,21 +93,6 @@ const AddTransaction: React.FC = () => {
               </button>
             </div>
           </div>
-          
-          {/*
-          <div className="mb-4">
-            <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
-              Description
-            </label>
-            <input
-              type="text"
-              id="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="What was this transaction for?"
-            />
-          </div>*/}
 
           {/* Description */}
           <FormInput
@@ -115,10 +100,11 @@ const AddTransaction: React.FC = () => {
           label= "Description"
           type="text"
           placeholder="What was this transaction for?"
+          value= {description}
           onChange={(e: any) => setDescription(e.target.value)}
           />
 
-
+          {/* Amount */}
           <FormInput
             id="amount"
             label="Amount ($)"
@@ -129,28 +115,6 @@ const AddTransaction: React.FC = () => {
             value={amount}
             onChange={(e: any) => setAmount(e.target.value)}
           />
-          
-          {/* Amount */}
-
-          {/*
-          <div className="mb-4">
-            <label htmlFor="amount" className="block text-sm font-medium text-gray-700 mb-1">
-              Amount ($)
-            </label>
-            <input
-              type="number"
-              id="amount"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              step="0.01"
-              min="0.01"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="0.00"
-            />
-          </div>
-          */}
-
-          
 
           {/* Category */}
           <div className="mb-6">
@@ -178,23 +142,13 @@ const AddTransaction: React.FC = () => {
             </select>
           </div>
 
-          {/*
-          <div>
-              <input
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                required
-              />
-          </div>*/}
-
           {/* date */}
           
         <FormInput
           id= "date"
           label= "Date"
           type="Date"
-          value={Date}
+          value={date}
           onChange={(e: any) => setDate(e.target.value)}
           />
 

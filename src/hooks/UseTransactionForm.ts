@@ -4,7 +4,8 @@ import { TransactionType } from '../types';
 //import { DEFAULT_CATEGORIES } from '../constants/categories';
 
 
-
+/* custom hook. probably? recieves and sets the values in the constant before they are (probably) 
+passed as props to AddTransaction */
 export const useTransactionForm = (onSuccess?: () => void) => {
     const { addTransaction } = useAppContext();
     const [isFormOpen, setIsFormOpen] = useState(false);

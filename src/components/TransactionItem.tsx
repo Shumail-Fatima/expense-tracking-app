@@ -148,7 +148,7 @@ const TransactionItem: React.FC<TransactionItemProps> = ({ transaction }) => {
               </div>
             </div>
 
-            {showDeleteConfirm && (
+            { showDeleteConfirm && (
               <div className="mt-4 bg-red-50 border border-red-200 p-3 rounded">
                 <p className="text-sm text-red-700 mb-2">Are you sure you want to delete this transaction?</p>
                 <div className="flex justify-end space-x-2">
